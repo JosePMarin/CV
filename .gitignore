@@ -1,5 +1,6 @@
-/extra
-/build
-/bin
-/.gitmodules
-/.git
+extra/
+build/
+bin/
+.gitmodules/
+.git/
+.vscode/

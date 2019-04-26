@@ -40,3 +40,5 @@ find_package ( OpenCV REQUIRED )
 
 message (STATUS "found this OpenCV: ${OpenCV_LIBRARY}")
 message (STATUS "found this GTest: ${GTest_LIBRARY}")
+
+add_subdirectory(src)

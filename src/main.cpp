@@ -1,10 +1,10 @@
-#include <date.h>
+#include <opencv.hpp>
 #include <iostream>
 
 
 
 int main () 
 {
-    Date date(2019,03,18);
-    std::cout <<date.getDay()<<std::endl;
+    
+    std::cout <<"hello world"<<std::endl;
 }

@@ -36,9 +36,13 @@ add_custom_target(unit_tests COMMAND ${CMAKE_CTEST_COMMAND} -R unit_)
 
 #Locating packages
 find_package ( GTest REQUIRED )
-find_package ( OpenCV REQUIRED )
+find_package ( OpenCV  REQUIRED )
 
-message (STATUS "found this OpenCV: ${OpenCV_LIBRARY}")
+
+
+
 message (STATUS "found this GTest: ${GTest_LIBRARY}")
 
 add_subdirectory(src)
+
+#set(opencv_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extra/opencv/build/install/lib/cmake/opencv4")

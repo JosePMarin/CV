@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/donjo/Desktop/projectTest/src/lib/Date.h
+
+C:/Users/donjo/Desktop/projectTest/src/lib/date.cpp
+Date.h
+C:/Users/donjo/Desktop/projectTest/src/lib/Date.h
+

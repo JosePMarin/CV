@@ -3,6 +3,7 @@
 add_executable(cv
         main.cpp
         src/display.cpp
+        src/process.cpp
 )
 
 

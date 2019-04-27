@@ -8,6 +8,7 @@ private:
     const std::string m_path;
     cv::VideoCapture cap;
     int m_device;
+    
 
     
 
@@ -18,5 +19,7 @@ public:
     Display(int device);
 
     void fromVideo();
+
+    ~Display();
     
 };

@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include "display.hpp"
+#include "process.hpp"
 
 
 Display::Display(const std::string &path)
@@ -29,20 +30,26 @@ void Display::fromVideo()
     while (cap.isOpened())
     {
         cv::Mat frame;
-        cap >> frame; // get a new frame from camera
-        cvtColor(frame, edges, cv::COLOR_BGR2GRAY);
-        GaussianBlur(edges, edges, cv::Size(7,7), 1.5, 1.5);
-        Canny(edges, edges, 0, 30, 3);
-        imshow("edges", edges);
+        cv::Mat frameOut;
+        cap.read(frame); // get a new frame from camera
+        Process proc(frame);
+        proc.framePreProcess(frameOut);
+        
+        imshow("edges", frameOut);
         if(cv::waitKey(30) >= 0)
             break;
     }
-    
-    
-   
-    
+
+    //Feeing up space and closing streams.
+    cap.release();
+    cv::destroyAllWindows();
+        
     // the camera will be deinitialized automatically in VideoCapture destructor
    
     
 
+}
+
+Display::~Display()
+{
 }

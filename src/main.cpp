@@ -7,6 +7,7 @@
 int main(int argc, char **argv)
 {
     const std::string path ("/home/jmarin/Desktop/CV/videos/test.mp4");
+    std::cout <<"test"<<std::endl; 
 
     try
     {

@@ -43,6 +43,8 @@ find_package ( OpenCV  REQUIRED )
 
 message (STATUS "found this GTest: ${GTest_LIBRARY}")
 
-add_subdirectory(src)
 
-#set(opencv_DIR "${CMAKE_CURRENT_SOURCE_DIR}/extra/opencv/build/install/lib/cmake/opencv4")
+
+#adding directories of the code and the tests
+add_subdirectory(src)
+#add_subdirectory(tests)

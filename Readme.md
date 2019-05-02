@@ -22,11 +22,11 @@ Get Started:
 
  in folder ../scripts/
  
- |run reposbuild.sh for dependencies installation.                | 
+ run reposbuild.sh for dependencies installation.                
  ------------------------------------------------------------------
- |run appbuild.sh for the program to build.                       |
+ run appbuild.sh for the program to build.                       
  ------------------------------------------------------------------
- |run exe.sh for run the executable (after building the program)  |
+ run exe.sh for run the executable (after building the program)  
  ------------------------------------------------------------------
- |run test.sh for run the tests                                   |
+ run test.sh for run the tests                                   
  ------------------------------------------------------------------

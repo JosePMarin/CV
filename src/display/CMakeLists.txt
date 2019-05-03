@@ -13,7 +13,7 @@ target_link_libraries(libdisplay
 
 # Specify the include directories for the headers exported by this library
 target_include_directories(libdisplay PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/headers
+    ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
 

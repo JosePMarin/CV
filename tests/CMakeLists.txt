@@ -1,28 +1,42 @@
-find_package(Threads REQUIRED)
+
+#CMake version >= 3.10 required for gtest_discover_tests
+cmake_minimum_required(VERSION 3.10.3)
 
 
-# Create a libgtest target to be used as a dependency by test programs
-add_library(libgtest IMPORTED STATIC GLOBAL)
-add_dependencies(libgtest GTest)
+cmake_policy(SET CMP0015 NEW)
+cmake_policy(SET CMP0048 NEW)
 
-# Set libgtest properties
-set_target_properties(libgtest PROPERTIES
-    "IMPORTED_LOCATION" "${binary_dir}/googlemock/gtest/libgtest.a"
-    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
+
+add_executable(test_testDisp
+        testdisp.cpp
 )
 
-# Create a libgmock target to be used as a dependency by test programs
-add_library(libgmock IMPORTED STATIC GLOBAL)
-add_dependencies(libgmock gtest)
 
-# Set libgmock properties
-set_target_properties(libgmock PROPERTIES
-    "IMPORTED_LOCATION" "${binary_dir}/googlemock/libgmock.a"
-    "IMPORTED_LINK_INTERFACE_LIBRARIES" "${CMAKE_THREAD_LIBS_INIT}"
+target_include_directories(test_testDisp
+        PUBLIC
+        ${CMAKE_SOURCE_DIR}/tests/mock
+        ${GTest_LIBRARY}
+        
 )
 
-# I couldn't make it work with INTERFACE_INCLUDE_DIRECTORIES
-include_directories("${source_dir}/googletest/include"
-                    "${source_dir}/googlemock/include")
+target_link_libraries(test_testDisp
+        PUBLIC
+        GTest::Main
+        GTest::GTest
+        libdisplay
+        libprocess
+        stdc++fs
+        ${CMAKE_THREAD_LIBS_INIT}
+        
+)
 
-add_subdirectory(testDisplay)
+
+
+
+gtest_discover_tests(test_testDisp TEST_PREFIX unit_
+
+)
+
+install (TARGETS test_testDisp
+        DESTINATION "${CMAKE_INSTALL_TESTDIR}"
+)

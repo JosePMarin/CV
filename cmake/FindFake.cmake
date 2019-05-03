@@ -2,7 +2,7 @@ set(GTest_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extra/googletest/build/install
 set(GTest_LIBRARY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extra/googletest/build/install/lib)
 set(LIBPREFIX "${CMAKE_SHARED_LIBRARY_PREFIX}")
 set(LIBSUFFIX "${CMAKE_SHARED_LIBRARY_SUFFIX}")
-set(GTest_LIBRARY "${GTest_LIBRARY_DIR}/${LIBPREFIX}GTest${LIBSUFFIX}")
+set(GTest_LIBRARY "${GTest_LIBRARY_DIR}/${LIBPREFIX}gtest.a")
 
 
 add_library(GTest IMPORTED SHARED GLOBAL)

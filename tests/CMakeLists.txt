@@ -3,9 +3,9 @@
 cmake_minimum_required(VERSION 3.10.3)
 
 
-cmake_policy(SET CMP0015 NEW)
-cmake_policy(SET CMP0048 NEW)
-
+cmake_policy(SET CMP0015 NEW)  #Enable link_directories()
+cmake_policy(SET CMP0048 NEW)   #Enable VERSION option of the project()
+#Check policies https://www.mankier.com/7/cmake-policies#Policies_Introduced_by_Cmake_3.0-CMP0048
 
 add_executable(test_testDisp
         testdisp.cpp

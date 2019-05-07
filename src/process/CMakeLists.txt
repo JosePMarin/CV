@@ -1,12 +1,13 @@
 # Declare the libraries
 add_library(libprocess STATIC
-        process.cpp
+        Process.cpp
 )
 
 #link the libraries in depencendy of this one
 target_link_libraries(libprocess
     PUBLIC
     ${OpenCV_LIBS}
+    libmock
 )
 
 # Specify the include directories exported by the libraries

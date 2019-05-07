@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "opencv2/opencv.hpp"
+#include "mockdisp.hpp"
 
 
 
@@ -14,10 +15,14 @@ struct WindowSize
     std::string WINDOWNAME="CV";
 };
 
-class Display
+class Display : public AdaptorMockDisp
 {
 
 private:
+/*-----Construct&Methods----*/
+    
+
+protected:
 
 /*-----Variables----*/
     const std::string m_path;
@@ -25,9 +30,10 @@ private:
     int m_device;
     std::string m_windowName;
     WindowSize m_wSize;
+    // AdaptorMockDisp *m_mockInterface;
     
-/*-----Const&Methods----*/
-    Display();
+/*-----Construct&Methods----*/
+    
     void close();
     void setWindow();
 

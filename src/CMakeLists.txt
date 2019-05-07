@@ -15,6 +15,7 @@ target_link_libraries(cv
 
 add_subdirectory(process)
 add_subdirectory(display)
+add_subdirectory(mock)
 
 
 

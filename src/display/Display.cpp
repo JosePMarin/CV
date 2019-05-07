@@ -24,6 +24,7 @@ Display::Display(const int device)
     m_cap=cv::VideoCapture(m_device);
 }
 
+
 /*---------------------------------------------Member functions------------------------------------------------*/
 
 /*-------------PrivateMembers---------------*/

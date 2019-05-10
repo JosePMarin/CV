@@ -9,9 +9,17 @@ project (cv VERSION 1.0.0 LANGUAGES CXX)
 #Setting configurations for the compiler: c++ version and debug mode (-g command en gcc in order to add symbols for debugging proposes)
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_BUILD_TYPE Debug)
+set (CMAKE_CXX_FLAGS "-pthread ${CMAKE_C_FLAGS}")
+set (CMAKE_CXX_FLAGS "-std=c++17 ${CMAKE_C_FLAGS}")
+
+
+
+
 
 #Setting up flags for reference to symbol 'pthread_key_delete@@GLIBC_2.2.5'
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -pthread")
+SET(CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/extra/opencv/build/install/lib/cmake/") #in order to find OpenCVConfig.cmake
+
 
 #Setting the path to the binaries of the tests
 set(CMAKE_INSTALL_TESTDIR "${CMAKE_CURRENT_SOURCE_DIR}/bin/tests" CACHE STRING "Test executable (bin/tests)")

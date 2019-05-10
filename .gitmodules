@@ -1,0 +1,9 @@
+[submodule "extra/thread-pool"]
+	path = extra/thread-pool
+	url = https://github.com/mtrebi/thread-pool.git
+[submodule "extra/googletest"]
+	path = extra/googletest
+	url = https://github.com/google/googletest.git
+[submodule "extra/opencv"]
+	path = extra/opencv
+	url = https://github.com/opencv/opencv.git

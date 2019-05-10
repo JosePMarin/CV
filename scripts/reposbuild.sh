@@ -21,6 +21,7 @@ cd extra
 git submodule add --force https://github.com/google/googletest.git
 git submodule add --force https://github.com/opencv/opencv.git 
 
+
 git submodule init
 git submodule update
 
@@ -33,7 +34,7 @@ echo "extra_dir= " $extra_dir
 ################################# Building process ############################
 
 #looping through libraries in order to build them
-for pack in googletest opencv
+for pack in googletest opencv 
 do  
     echo "${extra_dir}/${pack}"
     cd "${extra_dir}/${pack}"

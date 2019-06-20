@@ -1,47 +1,51 @@
-#include "display/display.hpp"
 #include "record/record.hpp"
 #include <iostream>
 #include "ThreadPool.h"
+#include "display/display.hpp"
 
 
 
 int main(int argc, char **argv)
 {
+ 
     cv::Mat frame;
     const std::string path ("/home/jmarin/Desktop/CV/videos/test.mp4");
+    BaseVideo::videoInit(path);
+
 
 
     ThreadPool pool(3);
 
     pool.init();
 
-    Record rec (path);
+    /*-This thread grabs frames from video
+    */
+    auto t_record =pool.submit(Record::grabFromVideo, std::ref(frame));
 
-   
+    //t_record.get();
+    /*-This thread displays the frames
+    */
+    auto t_display = pool.submit(Display::fromVideo, std::ref(frame));
 
-    auto t_record =pool.submit(rec.grabFromVideo,std::ref(frame));
-    // auto t_record pool.submit(Record(), std::ref(path,frame));
-    t_record.get();
+    t_display.get();
 
-    // const std::string path ("/home/jmarin/Desktop/CV/videos/test.mp4");
+    
+
+ 
     // unsigned int n = std::thread::hardware_concurrency(); //Number of threads supported by OS
-
-    // try
-    // {
-    //     Display disp(path);
-    //     disp.fromVideo();
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
-
-    
-    
-    
-
-    
+  
     return 0;
     
 
 }
+
+    // cv::Mat frame;
+    // const std::string path ("/home/jmarin/Desktop/CV/videos/test.mp4");
+    // BaseVideo::videoInit(path);
+
+//     while (BaseVideo::getInstance()->getVideo().isOpened())
+//     {
+//         Record::grabFromVideo(frame);
+
+//         Display::fromVideo(frame);
+//     }

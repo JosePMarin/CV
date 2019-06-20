@@ -7,6 +7,7 @@ add_library(librecord STATIC
 target_link_libraries(librecord
     PUBLIC
     ${OpenCV_LIBS}
+    libbasevideo
 )
 
 # Specify the include directories exported by the libraries

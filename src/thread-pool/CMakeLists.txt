@@ -1,15 +1,15 @@
 # Declare the libraries
-add_library(libthread-pool 
-    INTERFACE
+add_library(libthread-pool   STATIC
+        ThreadPool.cpp    
 )
 
 #link the libraries in depencendy of this one
 target_link_libraries(libthread-pool
-    INTERFACE
+    PUBLIC
 )
 
 # Specify the include directories exported by the libraries
 target_include_directories(libthread-pool 
-    INTERFACE
+    PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )

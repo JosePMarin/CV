@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblibrecord.a  CMakeFiles/librecord.dir/Record.cpp.o
+/usr/bin/ranlib liblibrecord.a

@@ -1,29 +1,29 @@
+#pragma once
 #include "opencv2/opencv.hpp"
 #include <string>
+#include "baseVideo.hpp"
 
 
 
-class Record
+
+class Record 
 {
 private:
-    const std::string m_path;
-    
-    
-    
+    Record();
+         
 
 public:
-    cv::VideoCapture m_cap;
-    
-    Record(const std::string &path);
 
-    void grabFromVideo(cv::Mat &frame);
+    Record(Record const&)=delete;  // copy ctor deleted
+
+    Record& operator=(Record const&)=delete; //assign op. deleted
+
+    static void grabFromVideo (cv::Mat &frame);
+
     ~Record();
 
 
 
-    // void operator ()(const std::string &path, cv::Mat &frame);
-    // void operator ()(int device, cv::Mat &frame);
-    // Record(const std::string &path);
-    // Record(const std::string &path, cv::Mat &frame);
+
 };
 

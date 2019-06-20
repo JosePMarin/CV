@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/thread-pool/include/ThreadPool.h
+functional
+-
+mutex
+-
+queue
+-
+thread
+-
+atomic
+-
+vector
+-
+
+/home/jmarin/Desktop/CV/src/thread-pool/ThreadPool.cpp
+ThreadPool.h
+/home/jmarin/Desktop/CV/src/thread-pool/ThreadPool.h
+

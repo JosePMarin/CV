@@ -7,7 +7,7 @@ add_library(libprocess STATIC
 target_link_libraries(libprocess
     PUBLIC
     ${OpenCV_LIBS}
-    libmock
+    libbasevideo
 )
 
 # Specify the include directories exported by the libraries

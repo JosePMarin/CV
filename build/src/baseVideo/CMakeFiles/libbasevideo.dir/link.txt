@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblibbasevideo.a  CMakeFiles/libbasevideo.dir/BaseVideo.cpp.o
+/usr/bin/ranlib liblibbasevideo.a

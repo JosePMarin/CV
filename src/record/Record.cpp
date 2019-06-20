@@ -1,21 +1,24 @@
 #include "record.hpp"
 
 
-Record::Record(const std::string &path)
-    :m_path(path)
+
+Record::Record()
 {
-    m_cap=cv::VideoCapture(m_path.c_str());
+    
 }
 
 
 
-void grabFromVideo(cv::Mat &frame)
+void Record::grabFromVideo(cv::Mat &frame)
 {
-    if(!m_cap.isOpened()) 
+    // cv::VideoCapture m_cap;
+    // m_cap=cv::VideoCapture(path.c_str());
+    // if(!m_cap->isOpened()) 
     
-        throw std::runtime_error("Video not found");       
+    //     throw std::runtime_error("Video not found");
     
-    m_cap.read(frame); 
+    
+    BaseVideo::getInstance()->getVideo().read(frame); 
     if (frame.empty())
         throw std::runtime_error("Error while reading the video");
     
@@ -25,11 +28,3 @@ Record::~Record()
 {
 }
 
-
-
-// void Record::operator()(int device, cv::Mat &frame)
-// {
-//     device=1;
-//     m_cap=cv::VideoCapture(device);
-//     grabFromVideo(frame);
-// }

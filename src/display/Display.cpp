@@ -5,27 +5,10 @@
 
 /*----------------------------------------------Constructor-----------------------------------------------*/
 
-/**@Brief: Constructor by string
- * @Params: string provided by the caller
-*/
-Display::Display(const std::string &path)
-    :m_path(path)
-{
-    m_cap=cv::VideoCapture(m_path.c_str());
-
-}
-
-/**@Brief: Constructor by int. Any int provided will be adjusted to one (display by camera), for sack of the purpouse of the constructor
- * @Params:
-*/
-Display::Display(const int device)
-{
-    m_device=1;
-    m_cap=cv::VideoCapture(m_device);
-}
 
 
-/*---------------------------------------------Member functions------------------------------------------------*/
+
+/*---------------------------------------------Member functions-------------------------------------------*/
 
 /*-------------PrivateMembers---------------*/
 
@@ -34,9 +17,10 @@ Display::Display(const int device)
 */
 void Display::close()
 {
-    m_cap.release();
+    
+    BaseVideo::getInstance()->getVideo().release();
     cv::destroyAllWindows();
-    if (m_cap.isOpened())
+    if (BaseVideo::getInstance()->getVideo().isOpened())
         throw std::runtime_error("Error closing streams");
     // the camera will be deinitialized automatically in VideoCapture destructor
 
@@ -47,57 +31,72 @@ void Display::close()
 */
 void Display::setWindow()
 {
-    if (!m_cap.isOpened())
+    WindowSize wSize;
+    cv::namedWindow("CV", cv::WINDOW_AUTOSIZE);
+    if (!BaseVideo::getInstance()->getVideo().isOpened())
         throw std::runtime_error("Can not configure cam because it is not opened");
-    m_cap.set(cv::CAP_PROP_FRAME_HEIGHT,m_wSize.d_HEIGHT);
-    m_cap.set(cv::CAP_PROP_FRAME_WIDTH,m_wSize.d_WIDTH);
-    cv::resizeWindow(m_wSize.WINDOWNAME,m_wSize.WIDTH,m_wSize.HEIGHT);  //Flag as null because of manual autosize
+    BaseVideo::getInstance()->getVideo().set(cv::CAP_PROP_FRAME_HEIGHT,wSize.d_HEIGHT);
+    BaseVideo::getInstance()->getVideo().set(cv::CAP_PROP_FRAME_WIDTH,wSize.d_WIDTH);
+    cv::resizeWindow(wSize.WINDOWNAME,wSize.WIDTH,wSize.HEIGHT);  //Flag as null because of manual autosize
 }
 
 /**@Brief: Process the images feeded from the source
  * @Params:m_frameOut: output array of preprocessed images
 */
-void Display::processImages()
-{    
-    m_cap.read(m_frame); // get a new frame from camera
-    if (m_frame.empty())
-        throw std::runtime_error("Error while reading the video");
-    Process proc(m_frame); //Initialize Process class
-    proc.preProcFrame(m_frame); //Preprocess of images resulting in a new output array    
+// void Display::processImages()
+// {    
+//     m_cap.read(m_frame); // get a new frame from camera
+//     if (m_frame.empty())
+//         throw std::runtime_error("Error while reading the video");
+//     Process proc(m_frame); //Initialize Process class
+//     proc.preProcFrame(m_frame); //Preprocess of images resulting in a new output array    
     
-}
+// }
 
 /*-------------PublicMembers---------------*/
 
 /**@Brief: Display the content 
  * @Params:
 */
-void Display::fromVideo()
+
+void Display::fromVideo(cv::Mat &frame)
 {
-    if(!m_cap.isOpened()) 
+    for(;;)
     {
-        throw std::runtime_error("Video not found");        
-    }
-    else
-    {
-        //Set up 
-        setWindow();
+        Display::setWindow();
+        cv::imshow("CV",frame);
+        if (cv::waitKey(30)>=0)
+            BaseVideo::getInstance()->videoClose();
+            break;
+    }   
+}
+
+
+// void Display::fromVideo(cv::Mat &frame)
+// {
+//     if(!m_cap.isOpened()) 
+//     {
+//         throw std::runtime_error("Video not found");        
+//     }
+//     else
+//     {
+//         //Set up 
+//         setWindow();
         
 
-        //Controller
-        while (m_cap.isOpened())
-        {
-            //Process images
-            processImages();
-            //Display
-            imshow(m_windowName, m_frame);
-            if(cv::waitKey(30) >= 0)
-                break;
-        }
-    }
-    //Clean up
-    close();
-}
+//         //Controller
+//         while (m_cap.isOpened())
+//         {
+
+//             //Display
+//             imshow(m_windowName, frame);
+//             if(cv::waitKey(30) >= 0)
+//                 break;
+//         }
+//     }
+//     //Clean up
+//     close();
+// }
 
 /**@Brief: 
  * @Params:

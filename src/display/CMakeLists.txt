@@ -9,7 +9,7 @@ target_link_libraries(libdisplay
         PUBLIC
         ${OpenCV_LIBS}
         libprocess
-        libmock
+        libbasevideo
 )
 
 # Specify the include directories for the headers exported by this library

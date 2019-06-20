@@ -12,6 +12,7 @@ target_link_libraries(cv
         libprocess
         libthread-pool
         librecord
+        libbasevideo
 )
 
 
@@ -20,6 +21,7 @@ add_subdirectory(display)
 add_subdirectory(mock)
 add_subdirectory(thread-pool)
 add_subdirectory(record)
+add_subdirectory(baseVideo)
 
 
 

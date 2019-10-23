@@ -1,20 +1,13 @@
 Prerequisites:
 
-Requirements for OpenCV library in Linux (according with https://docs.opencv.org):
+command for basic c++ environment set up installation:
+$ sudo apt install gcc build-essential cmake && apt-get install git
 
-GCC 4.4.x or later
-CMake 2.6 or higher (We will need at least 3.10.3 for GoogleTest library)
-Git
-GTK+2.x or higher, including headers (libgtk2.0-dev)
-pkg-config
-Python 2.6 or later and Numpy 1.5 or later with developer packages (python-dev, python-numpy)
-ffmpeg or libav development packages: libavcodec-dev, libavformat-dev, libswscale-dev
-[optional] libtbb2 libtbb-dev
-[optional] libdc1394 2.x
-[optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev, libdc1394-22-dev
+for opencv libraries:
+https://opencv.org/releases/ for selecting the version to add to submodules
 
-command for all-packages installation:
-$ sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+
+
 
 
 
